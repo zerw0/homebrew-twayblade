@@ -1,0 +1,36 @@
+# Homebrew cask template for Twayblade's own tap (#52). Not published.
+# `scripts/homebrew-cask.py` fills VERSION and SHA256 from a release's
+# SHA256SUMS. The app is ad hoc signed (no paid signing, PLAN.md), so it is
+# for our tap only: homebrew/cask requires a notarised app. Gatekeeper asks
+# on first launch; the caveat says how, and nothing here removes quarantine.
+cask "twayblade" do
+  version "0.1.0-rc.2"
+  sha256 "413d6f297a9faffec9515e8fef34bc47302085822b55b7d62671cc8c4fca8f33"
+
+  url "https://github.com/zerw0/twayblade/releases/download/v#{version}/Twayblade-#{version}-arm64.dmg"
+  name "Twayblade"
+  desc "Matrix chat client with end-to-end encryption and calls"
+  homepage "https://github.com/zerw0/twayblade"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on arch: :arm64
+  depends_on macos: ">= :sonoma"
+
+  app "Twayblade.app"
+
+  caveats <<~EOS
+    Twayblade is not notarised. On first launch macOS refuses to open it:
+    choose Done, then open System Settings › Privacy & Security and click
+    Open Anyway next to Twayblade.
+  EOS
+
+  # Signed-in sessions live in the login Keychain and are not removed here.
+  zap trash: [
+    "~/Library/Application Support/Twayblade.Twayblade",
+    "~/Library/Preferences/com.twayblade.desktop.plist",
+  ]
+end
