@@ -7,8 +7,7 @@ end-to-end encrypted messages, spaces, threads and MatrixRTC calls.
 brew install --cask zerw0/twayblade/twayblade
 ```
 
-**Status:** the cask arrives with the first published release; none is
-published yet.
+**Status:** 0.1.0-rc.2, a test pre-release.
 
 ## First launch
 
