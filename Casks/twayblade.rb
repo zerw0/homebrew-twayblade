@@ -4,8 +4,8 @@
 # for our tap only: homebrew/cask requires apps that pass Gatekeeper. Gatekeeper
 # asks on first launch; the caveat says how, and nothing here removes quarantine.
 cask "twayblade" do
-  version "0.1.1-rc.3"
-  sha256 "9a42a3df3624b71b11f5d32e7c1d6f6486d5aa98fe6c350baecbc6b36e3c1a6d"
+  version "0.1.1-rc.4"
+  sha256 "a48c70dfb78fef9f2df3483ce86e407f188b56fb927e97df22df2c232e0a7f6f"
 
   url "https://github.com/zerw0/twayblade/releases/download/v#{version}/Twayblade-#{version}-arm64.dmg"
   name "Twayblade"
